@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
-from django.utils.translation import gettext as _
+from django.utils.translation import gettext as gt
 
 from core import models
 
@@ -10,15 +10,16 @@ class UserAdmin(BaseUserAdmin):
     list_display = ['email', 'name']
     fieldsets = (
         (None, {'fields': ('email', 'password')}),
-        (_('Personal info'), {'fields': ('name',)}),
+        (gt('Personal info'), {'fields': ('name',)}),
         (
-            _('Persmissions'),
+            gt('Persmissions'),
             {
                 'fields': ('is_active', 'is_staff', 'is_superuser')
             }
         ),
-        (_('Important dates'), {'fields': ('last_login', )})
+        (gt('Important dates'), {'fields': ('last_login', )})
     )
+
     add_fieldsets = (
         (None, {
             'classes': ('wide',),
